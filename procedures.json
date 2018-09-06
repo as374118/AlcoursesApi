@@ -1,0 +1,432 @@
+{
+  "spAddAccessForUser": {
+    "name": "spAddAccessForUser",
+    "params": [
+      {
+        "name": "@userId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@courseId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@accessTypeId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      }
+    ]
+  },
+  "spAddCourse": {
+    "name": "spAddCourse",
+    "params": [
+      {
+        "name": "@name",
+        "type": "nvarchar",
+        "maxBytes": 400
+      },
+      {
+        "name": "@description",
+        "type": "nvarchar",
+        "maxBytes": 4000
+      },
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      }
+    ]
+  },
+  "spAddCourseInternal": {
+    "name": "spAddCourseInternal",
+    "params": [
+      {
+        "name": "@name",
+        "type": "nvarchar",
+        "maxBytes": 400
+      },
+      {
+        "name": "@description",
+        "type": "nvarchar",
+        "maxBytes": 4000
+      },
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      }
+    ]
+  },
+  "spAddElement": {
+    "name": "spAddElement",
+    "params": [
+      {
+        "name": "@elementTypeId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@lessonId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@content",
+        "type": "nvarchar",
+        "maxBytes": -1
+      },
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      }
+    ]
+  },
+  "spAddElementInternal": {
+    "name": "spAddElementInternal",
+    "params": [
+      {
+        "name": "@elementTypeId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@lessonId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@content",
+        "type": "nvarchar",
+        "maxBytes": -1
+      },
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      }
+    ]
+  },
+  "spAddLesson": {
+    "name": "spAddLesson",
+    "params": [
+      {
+        "name": "@courseId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@description",
+        "type": "nvarchar",
+        "maxBytes": -1
+      },
+      {
+        "name": "@previousLessonId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@name",
+        "type": "nvarchar",
+        "maxBytes": 200
+      },
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      }
+    ]
+  },
+  "spAddLessonInternal": {
+    "name": "spAddLessonInternal",
+    "params": [
+      {
+        "name": "@courseId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@description",
+        "type": "nvarchar",
+        "maxBytes": -1
+      },
+      {
+        "name": "@previousLessonId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@name",
+        "type": "nvarchar",
+        "maxBytes": 200
+      },
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      }
+    ]
+  },
+  "spCheckUserAccess": {
+    "name": "spCheckUserAccess",
+    "params": [
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      },
+      {
+        "name": "@courseId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@canRead",
+        "type": "bit",
+        "maxBytes": 1
+      },
+      {
+        "name": "@canModify",
+        "type": "bit",
+        "maxBytes": 1
+      },
+      {
+        "name": "@roles",
+        "type": "nvarchar",
+        "maxBytes": 510
+      }
+    ]
+  },
+  "spCheckUserRoles": {
+    "name": "spCheckUserRoles",
+    "params": [
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      },
+      {
+        "name": "@roles",
+        "type": "nvarchar",
+        "maxBytes": 400
+      }
+    ]
+  },
+  "spGetCourse": {
+    "name": "spGetCourse",
+    "params": [
+      {
+        "name": "@courseId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      }
+    ]
+  },
+  "spGetCourseLanguages": {
+    "name": "spGetCourseLanguages",
+    "params": [
+      {
+        "name": "@courseId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      }
+    ]
+  },
+  "spGetCourses": {
+    "name": "spGetCourses",
+    "params": [
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      },
+      {
+        "name": "@canRead",
+        "type": "bit",
+        "maxBytes": 1
+      },
+      {
+        "name": "@canModify",
+        "type": "bit",
+        "maxBytes": 1
+      }
+    ]
+  },
+  "spGetCoursesToModify": {
+    "name": "spGetCoursesToModify",
+    "params": [
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      }
+    ]
+  },
+  "spGetCoursesToRead": {
+    "name": "spGetCoursesToRead",
+    "params": [
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      }
+    ]
+  },
+  "spGetElementTypes": {
+    "name": "spGetElementTypes",
+    "params": [
+      {
+        "name": "@onlyActive",
+        "type": "bit",
+        "maxBytes": 1
+      }
+    ]
+  },
+  "spGetUserDetails": {
+    "name": "spGetUserDetails",
+    "params": [
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      }
+    ]
+  },
+  "spUpdateCourse": {
+    "name": "spUpdateCourse",
+    "params": [
+      {
+        "name": "@courseId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@name",
+        "type": "nvarchar",
+        "maxBytes": 400
+      },
+      {
+        "name": "@description",
+        "type": "nvarchar",
+        "maxBytes": 4000
+      },
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      }
+    ]
+  },
+  "spUpdateElement": {
+    "name": "spUpdateElement",
+    "params": [
+      {
+        "name": "@elementId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@elementTypeId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@content",
+        "type": "nvarchar",
+        "maxBytes": -1
+      },
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      }
+    ]
+  },
+  "spUpdateLesson": {
+    "name": "spUpdateLesson",
+    "params": [
+      {
+        "name": "@lessonId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@description",
+        "type": "nvarchar",
+        "maxBytes": -1
+      },
+      {
+        "name": "@previousLessonId",
+        "type": "int",
+        "maxBytes": 4
+      },
+      {
+        "name": "@name",
+        "type": "nvarchar",
+        "maxBytes": 200
+      },
+      {
+        "name": "@userToken",
+        "type": "uniqueidentifier",
+        "maxBytes": 16
+      }
+    ]
+  },
+  "spUserAuthenticate": {
+    "name": "spUserAuthenticate",
+    "params": [
+      {
+        "name": "@username",
+        "type": "nvarchar",
+        "maxBytes": 200
+      },
+      {
+        "name": "@password",
+        "type": "nvarchar",
+        "maxBytes": 100
+      }
+    ]
+  },
+  "spUserCreate": {
+    "name": "spUserCreate",
+    "params": [
+      {
+        "name": "@name",
+        "type": "nvarchar",
+        "maxBytes": 100
+      },
+      {
+        "name": "@surname",
+        "type": "nvarchar",
+        "maxBytes": 100
+      },
+      {
+        "name": "@email",
+        "type": "nvarchar",
+        "maxBytes": 200
+      },
+      {
+        "name": "@password",
+        "type": "nvarchar",
+        "maxBytes": 100
+      }
+    ]
+  }
+}
