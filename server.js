@@ -12,7 +12,7 @@ async function run(app) {
         // Connecting to DB
         LogUtils.logInfo('Connection started');
         const connection = await Sql.connect(Config.db.magicLink);
-        LogUtils.logOk('Connected');
+        LogUtils.logOk('Connected to DB');
 
         // Fetching and preparing procedures data
         const proceduresDetails = await ProceduresUtils.getStoreProceduresInfo(connection);
@@ -23,16 +23,15 @@ async function run(app) {
         for (let procedureName in preparedProceduresDetails) {
             LogUtils.logInfo('Creating endpoint for: ' + procedureName);
             const procedure = preparedProceduresDetails[procedureName];
-            console.log(procedure);
 
             EndpointUtils.createEndpointForStoredProcedure(app, connection, procedure);
         }
         
         // App running
         app.listen(Config.PORT, function () {
-            LogUtils.logInfo('AlcoursesApi app listening on port ' + Config.PORT);
+            LogUtils.logOk('AlcoursesApi app listening on port ' + Config.PORT);
         });
     } catch (err) {
-        LogUtils.logInfo(err);
+        LogUtils.logError('Error occured: ' + err);
     }
 }

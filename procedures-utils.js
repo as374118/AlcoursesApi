@@ -3,6 +3,7 @@
 // TODO maybe it has sense to add some options object for each procedureName {adminRequired, loggingRequired}
 
 const Sql = require('mssql');
+const LogUtils = require('./log-utils');
 
 let ProceduresUtils = {};
 
@@ -32,7 +33,9 @@ const storedProceduresNames = [
 ];
 
 ProceduresUtils.prepareProceduresData = proceduresJSON => {
-    var result = {};
+    let result = {};
+    let skipped = {};
+
 
     proceduresJSON.forEach(parameter => {
         const procedureName = parameter.ObjectName;
@@ -44,6 +47,12 @@ ProceduresUtils.prepareProceduresData = proceduresJSON => {
                 result[procedureName] = {name: procedureName, params: [paramDescription]};
             } else {
                 result[procedureName].params.push(paramDescription);
+            }
+        } else {
+            if (!skipped[procedureName]) {
+                skipped[procedureName] = true;
+                LogUtils.logWarning(procedureName + ' was skipped.');
+                LogUtils.logInfo('If you want to add it - please make some changes in procedure-utils file');
             }
         }
     });
