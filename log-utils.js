@@ -4,19 +4,19 @@ const Fs = require('fs');
 let LogUtils = {};
 
 LogUtils.logError = function (msg) {
-    console.log("\x1b[31m%s\x1b[0m", msg); 
+    logWithTime("\x1b[31m%s\x1b[0m", msg); 
 };
 
 LogUtils.logOk = function (msg) {
-    console.log("\x1b[32m%s\x1b[0m", msg); 
+    logWithTime("\x1b[32m%s\x1b[0m", msg); 
 };
 
 LogUtils.logInfo = function (msg) {
-    console.log(msg);
+    logWithTime("\x1b[0m%s\x1b[0m", msg);
 };
 
 LogUtils.logWarning = function (msg) {
-    console.log("\x1b[33m%s\x1b[0m", msg);
+    logWithTime("\x1b[33m%s\x1b[0m", msg);
 };
 
 LogUtils.logProceduresInfo = async function (proceduresInfo) {
@@ -28,5 +28,10 @@ LogUtils.logProceduresInfo = async function (proceduresInfo) {
 
     await Fs.writeFileSync(logFile, dataToLog, 'utf8');
 };
+
+// TODO
+function logWithTime(color, msg) {
+    console.log(color, msg);
+}
 
 module.exports = LogUtils;

@@ -1,6 +1,7 @@
 const Sql = require('mssql');
 const Config = require('./config');
 const ProceduresUtils = require('./procedures-utils');
+const LogUtils = require('./log-utils');
 
 let EndpointUtils = {};
 
@@ -16,13 +17,22 @@ EndpointUtils.createEndpointForStoredProcedure = function(app, connection, proce
         for (let param of params) {
             const paramName = param.name;
             if (req.body && req.body[paramName]) {
-                request.input(paramName, ProceduresUtils.getTypeForParam(param), req.body[paramName]);
+                // LogUtils.logInfo('Passing param with name: ' + paramName + ' and value: ' + req.body[paramName] + ' and type: ');
+                // console.log(ProceduresUtils.getTypeForParam(param));
+                request.input(ProceduresUtils.prepareParamName(paramName), ProceduresUtils.getTypeForParam(param), req.body[paramName]);
+            } else {
+                LogUtils.logWarning('Parameter: ' + paramName + ' was not passed');
             }
         }
         // request execting
-        let results = await request.execute(procedureName);
+        let results;
+        try {
+            results = await request.execute(procedureName);
+        } catch (err) {
+            res.status(500).send(err);
+        }
 
-        return results;
+        return res.json(results);
     });
 };
 

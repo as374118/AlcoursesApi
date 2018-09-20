@@ -114,6 +114,10 @@ ProceduresUtils.getParams = function (procedure) {
 
 ProceduresUtils.getName = function (procedure) {
     return procedure.name;
-}
+};
+
+ProceduresUtils.prepareParamName = function (paramName) {
+    return paramName.replace('@', '');
+};
 
 module.exports = ProceduresUtils;

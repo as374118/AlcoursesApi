@@ -8,7 +8,7 @@ const Config = {
         magicLink: 'mssql://test:test@194.182.67.206:49172/Alcourses'
     },
 
-    API: 'api/',
+    API: '/api/',
     PORT: 3000,
 
     proceduresLogFile: './procedures.json'
